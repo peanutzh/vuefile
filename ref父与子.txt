@@ -1,0 +1,26 @@
+Vue.component('myF',{
+  data:function(){return {data1:"父数据"}},
+  template:`<div>
+    <button @click="send1">父组件</button>
+    <my-d ref="son"></my-d>
+  </div>`,
+  methods:{
+    send1:function(){
+      console.log(this.$refs.son.data2);
+    }
+  }
+})
+
+Vue.component('myD',{
+  data:function(){return {data2:"子数据"}},
+  template:`<div>
+    <button @click="send2">子组件</button>
+  </div>`,
+  methods:{
+    send2:function(){
+      console.log(this.$parent.data1);
+    }
+  }
+})
+
+new Vue({el:"#demo"})

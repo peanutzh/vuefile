@@ -1,0 +1,24 @@
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+
+<div id="demo">
+  <router-view></router-view>
+</div>
+
+let myRou = Vue.component('Rou',{
+  template:`<h1>路由</h1>`
+})
+
+//地址栏: 无值引用path:'/'   通用引用path:'*'
+const myRoutes = [
+  {path:'/ter',component:myRou}
+];
+
+const myRouter = new VueRouter({
+  routes:myRoutes
+})
+
+new Vue({
+  router:myRouter,
+  el:"#demo"
+})

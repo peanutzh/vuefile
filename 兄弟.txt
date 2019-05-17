@@ -1,0 +1,25 @@
+let bus = new Vue();
+Vue.component('myX',{
+  data:function(){return {data:"Êý¾Ý"}},
+  template:`<div>
+    <h1>¸ç¸ç</h1>
+    <button @click="send">·¢ËÍ</button>
+  </div>`,
+  methods:{
+    send:function(){
+      bus.$emit('sen',this.data)
+    }
+  }
+})
+
+Vue.component('myD',{
+  created:function(){
+    bus.$on('sen',function(msg){
+      console.log(msg);
+    })
+  },
+  template:`<div>
+    <h1>µÜµÜ</h1>
+  </div>`
+})
+new Vue({el:"#deom"})

@@ -1,0 +1,21 @@
+Vue.component('myF',{
+  data:function(){return {data:"数据"}},
+  template:`<div>
+    <my-z :udata="data"></my-z>
+  </div>`
+})
+
+Vue.component('myZ',{
+  props:['udata'],
+  template:`<div>
+    <h1>接收中...</h1>
+    <button @click="receive">接收</button>
+  </div>`,
+  methods:{
+    receive:function(){
+      console.log(this.udata);
+    }
+  }
+})
+
+new Vue({el:#deom})

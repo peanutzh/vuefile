@@ -1,0 +1,25 @@
+Vue.component('myF',{
+  template:`<div>
+    <my-z @z="receive"></my-z>		注意: 不要加（）
+  </div>`,
+  methods:{
+    receive:function(msg){
+      console.log(msg);
+    }
+  }
+});
+
+Vue.component('myZ',{
+  data:function(){return {data:"数据"}},
+  template:`<div>
+    <h1>数据发送中...</h1>
+    <button @click="send">发送</button>
+  </div>`,
+  methods:{
+    send:function(){
+      this.$emit('z',this.data);
+    }
+  }
+})
+
+new Vue({el:"#demo"})

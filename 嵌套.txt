@@ -1,0 +1,32 @@
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+
+<div id="demo">
+  <router-view></router-view>
+</div>
+
+let myVessel = Vue.component('vessel',{
+  template:`<div>
+    <h1>ÈÝÆ÷</h1>
+    <router-view></router-view>
+  </div>`
+})
+
+let myNest = Vue.component('nest',{
+  template:`<div>
+    <h1>Ç¶Ì×</h1>
+  </div>`
+})
+const myRoutes = [
+  {path:'/vessel',component:myVessel,
+     children:[
+       {path:'/nest',component:myNest}
+     ]}
+]
+const myRouter = new VueRouter({
+  routes:myRoutes
+})
+new Vue({
+  router:myRouter,
+  el:"#demo"
+})
